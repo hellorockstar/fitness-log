@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>样例数据</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <h1>样例数据</h1>
+    <p class="muted">测试用假数据。点「复制」→ 回到 App 的「录入」→ 点粘贴。建议按顺序导入：04 用来测试“重复 → 覆盖”，99 用来测试校验报错。</p>
+    <div id="list"></div>
+    <p><a href="./">← 回到 App</a></p>
+  </main>
+  <script type="module">
+    const files = [
+      ['01-力量-BodyPump.json', '多组力量训练（11 组，首次导入时 4 个动作都是新动作）'],
+      ['02-跑步.json', '一次有氧（跑步，含距离/步数/配速）'],
+      ['03-力量-含新动作.json', '带新动作：相扑硬拉'],
+      ['04-重复-覆盖01.json', '和 01 同一日期+开始时间 → 会提示覆盖'],
+      ['05-饮食-午餐.json', '饮食（加分项）'],
+      ['99-错误示例.json', '故意写错的字段 → 会被拒绝，什么都不写入'],
+    ];
+    const list = document.getElementById('list');
+    for (const [f, desc] of files) {
+      const div = document.createElement('div');
+      div.className = 'card';
+      div.innerHTML = `<h2></h2><p class="muted"></p><button class="primary">复制</button>`;
+      div.querySelector('h2').textContent = f;
+      div.querySelector('p').textContent = desc;
+      const btn = div.querySelector('button');
+      btn.addEventListener('click', async () => {
+        try {
+          const text = await (await fetch(`samples/${encodeURIComponent(f)}`, { cache: 'no-store' })).text();
+          await navigator.clipboard.writeText(text);
+          btn.textContent = '已复制 ✓';
+        } catch (e) {
+          btn.textContent = `复制失败：${e.message}`;
+        }
+        setTimeout(() => { btn.textContent = '复制'; }, 2000);
+      });
+      list.appendChild(div);
+    }
+  </script>
+</body>
+</html>

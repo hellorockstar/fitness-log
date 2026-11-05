@@ -42,6 +42,7 @@
       <div id="sub-exercise" class="sub" hidden>
         <select id="exercise-select"><option value="">选择动作…</option></select>
         <div id="exercise-history"></div>
+        <button id="btn-copy-lib" class="secondary" style="width:100%;margin-top:16px">复制动作库清单（贴给 Gem 用）</button>
       </div>
       <div id="sub-meals" class="sub" hidden></div>
     </section>
@@ -65,9 +66,10 @@
       <div id="settings-status"></div>
       <details class="card">
         <summary>清除本 App 在这台设备上的设置</summary>
-        <p class="muted">只删除 fitlog_token / fitlog_owner / fitlog_repo 三项，不影响同域名下的其他 App，也不影响 GitHub 上的数据。</p>
+        <p class="muted">只删除 fitlog_token / fitlog_owner / fitlog_repo / fitlog_last_exercise 四项，不影响同域名下的其他 App，也不影响 GitHub 上的数据。</p>
         <button id="btn-forget" class="danger">清除设置</button>
       </details>
+      <p><a href="samples.html">样例数据（测试用，一键复制）</a></p>
       <p class="muted small">版本：原型 v0.1 · 数据 schema v1</p>
     </section>
   </main>

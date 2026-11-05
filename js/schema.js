@@ -131,7 +131,7 @@ export function parseImport(text, library = []) {
 }
 
 function validateWorkout(obj, library, errors, warnings) {
-  checkUnknown(obj, ['schema_version', 'kind', 'workout', 'sets', 'new_exercises'], '顶层', errors);
+  checkUnknown(obj, ['schema_version', 'kind', 'workout', 'sets', 'exercises'], '顶层', errors);
   const w = obj.workout;
   if (!w || typeof w !== 'object' || Array.isArray(w)) {
     errors.push('workout：缺失或不是对象');
@@ -165,15 +165,15 @@ function validateWorkout(obj, library, errors, warnings) {
   if (!isBlank(w.pace) && !paceUnit(w.type)) warnings.push(`配速只对跑步（每公里）和划船机（每 500m）有意义，类型「${w.type}」也会照常保存`);
   if (!isBlank(w.stroke_rate) && w.type !== '划船机') warnings.push('桨频一般只用于划船机，仍会照常保存');
 
-  // 新动作
+  // 动作定义：Gem 声明本次用到的动作；动作库里没有的才是新动作
   const libByName = new Map(library.map((e) => [e.name, e]));
   const newEx = [];
-  const newExIn = obj.new_exercises ?? [];
-  if (!Array.isArray(newExIn)) errors.push('new_exercises：应为数组');
+  const newExIn = obj.exercises ?? [];
+  if (!Array.isArray(newExIn)) errors.push('exercises：应为数组');
   else {
     const seen = new Set();
     newExIn.forEach((e, i) => {
-      const p = `new_exercises[${i}]`;
+      const p = `exercises[${i}]`;
       if (!e || typeof e !== 'object' || Array.isArray(e)) { errors.push(`${p}：应为对象`); return; }
       checkUnknown(e, NEW_EX_FIELDS, p, errors);
       if (isBlank(e.name) || typeof e.name !== 'string') { errors.push(`${p}.name：必填`); return; }
@@ -186,7 +186,7 @@ function validateWorkout(obj, library, errors, warnings) {
       const existing = libByName.get(name);
       if (existing) {
         const diff = ['base', 'equipment', 'measure'].filter((k) => existing[k] !== e[k]);
-        warnings.push(`「${name}」已在动作库中，不按新动作处理${diff.length ? `（以动作库为准，忽略不同的字段：${diff.join(', ')}）` : ''}`);
+        if (diff.length) warnings.push(`「${name}」已在动作库中，以动作库为准（忽略不同的字段：${diff.map((k) => `${k} 库里是「${existing[k]}」`).join('，')}）`);
         return;
       }
       newEx.push({ name, base: String(e.base ?? '').trim(), equipment: e.equipment, measure: e.measure });
@@ -207,7 +207,7 @@ function validateWorkout(obj, library, errors, warnings) {
       const name = typeof s.exercise === 'string' ? s.exercise.trim() : '';
       if (!name) { errors.push(`${p}.exercise：必填`); return; }
       const ex = exByName.get(name);
-      if (!ex) errors.push(`${p}.exercise：「${name}」不在动作库里，也没有出现在 new_exercises 中`);
+      if (!ex) errors.push(`${p}.exercise：「${name}」不在动作库里，也没有在 exercises 中定义`);
       if (!isInt(s.set) || s.set < 1) errors.push(`${p}.set：应为从 1 开始的整数（当前：${JSON.stringify(s.set)}）`);
       const key = `${name}#${s.set}`;
       if (seenSet.has(key)) errors.push(`${p}：「${name}」第 ${s.set} 组重复出现`);

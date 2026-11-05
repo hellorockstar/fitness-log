@@ -309,6 +309,17 @@ $('#exercise-select').addEventListener('change', () => {
   renderExerciseHistory();
 });
 
+$('#btn-copy-lib').addEventListener('click', async () => {
+  const lib = historyCache?.snap.library ?? [];
+  const text = `我的动作库（动作名｜基础动作｜器械｜计量）：\n${lib.map((e) => `${e.name}｜${e.base}｜${e.equipment}｜${e.measure}`).join('\n')}\n`;
+  try {
+    await navigator.clipboard.writeText(text);
+    msg($('#history-status'), 'ok', `已复制 ${lib.length} 个动作。粘贴到 Gem 的「知识」或对话开头即可。`);
+  } catch {
+    msg($('#history-status'), 'warn', `复制失败，请手动复制：\n${esc(text)}`);
+  }
+});
+
 const SESSIONS_SHOWN = 5;
 async function renderExerciseHistory() {
   const h = historyCache;

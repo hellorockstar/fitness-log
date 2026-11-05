@@ -26,5 +26,10 @@
     { "exercise": "平板支撑", "set": 1, "seconds": 45, "challenge": "适中" },
     { "exercise": "平板支撑", "set": 2, "seconds": 30, "challenge": "有挑战" }
   ],
-  "new_exercises": []
+  "exercises": [
+    { "name": "杠铃深蹲", "base": "深蹲", "equipment": "杠铃", "measure": "次数" },
+    { "name": "杠铃卧推", "base": "卧推", "equipment": "杠铃", "measure": "次数" },
+    { "name": "传统硬拉", "base": "硬拉", "equipment": "杠铃", "measure": "次数" },
+    { "name": "平板支撑", "base": "平板支撑", "equipment": "自重", "measure": "秒" }
+  ]
 }

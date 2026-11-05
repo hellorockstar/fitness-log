@@ -21,7 +21,9 @@
     { "exercise": "相扑硬拉", "set": 3, "load_kg": 7.5, "reps": 8, "challenge": "有挑战" },
     { "exercise": "平板支撑", "set": 1, "seconds": 60, "challenge": "有挑战" }
   ],
-  "new_exercises": [
-    { "name": "相扑硬拉", "base": "硬拉", "equipment": "杠铃", "measure": "次数" }
+  "exercises": [
+    { "name": "杠铃深蹲", "base": "深蹲", "equipment": "杠铃", "measure": "次数" },
+    { "name": "相扑硬拉", "base": "硬拉", "equipment": "杠铃", "measure": "次数" },
+    { "name": "平板支撑", "base": "平板支撑", "equipment": "自重", "measure": "秒" }
   ]
 }
