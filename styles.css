@@ -80,6 +80,7 @@ label { display: block; font-size: 14px; color: var(--muted); }
 .segmented button.on { background: var(--card); font-weight: 600; }
 .tabbar {
   position: fixed; left: 0; right: 0; bottom: 0; display: flex;
+  background: var(--card);
   background: color-mix(in srgb, var(--card) 92%, transparent);
   -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
   border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom);
