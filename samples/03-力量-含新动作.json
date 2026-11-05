@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "kind": "workout",
+  "workout": {
+    "date": "2026-11-05",
+    "start_time": "19:00",
+    "type": "力量",
+    "duration_min": 45,
+    "calories": 280,
+    "course": "下肢自主训练",
+    "challenge": "有挑战",
+    "performance": "第一次做相扑硬拉，动作还不熟",
+    "mood": "有点紧张但很有成就感"
+  },
+  "sets": [
+    { "exercise": "杠铃深蹲", "set": 1, "load_kg": 7.5, "reps": 12, "challenge": "适中" },
+    { "exercise": "杠铃深蹲", "set": 2, "load_kg": 7.5, "reps": 12, "challenge": "适中" },
+    { "exercise": "杠铃深蹲", "set": 3, "load_kg": 10, "reps": 8, "challenge": "有挑战", "note": "第一次上 10 kg" },
+    { "exercise": "相扑硬拉", "set": 1, "load_kg": 5, "reps": 10, "challenge": "适中", "note": "站距偏窄" },
+    { "exercise": "相扑硬拉", "set": 2, "load_kg": 5, "reps": 10, "challenge": "适中" },
+    { "exercise": "相扑硬拉", "set": 3, "load_kg": 7.5, "reps": 8, "challenge": "有挑战" },
+    { "exercise": "平板支撑", "set": 1, "seconds": 60, "challenge": "有挑战" }
+  ],
+  "new_exercises": [
+    { "name": "相扑硬拉", "base": "硬拉", "equipment": "杠铃", "measure": "次数" }
+  ]
+}

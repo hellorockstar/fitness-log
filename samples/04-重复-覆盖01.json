@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "kind": "workout",
+  "workout": {
+    "date": "2026-11-02",
+    "start_time": "18:30",
+    "type": "力量",
+    "duration_min": 60,
+    "calories": 430,
+    "avg_hr": 128,
+    "course": "BodyPump 128",
+    "challenge": "有挑战",
+    "performance": "修正版：卡路里按手表重新填了，深蹲第 4 组其实是 8 次",
+    "mood": "下班很累，练完反而精神了"
+  },
+  "sets": [
+    { "exercise": "杠铃深蹲", "set": 1, "load_kg": 5, "reps": 16, "challenge": "轻松" },
+    { "exercise": "杠铃深蹲", "set": 2, "load_kg": 5, "reps": 16, "challenge": "适中" },
+    { "exercise": "杠铃深蹲", "set": 3, "load_kg": 7.5, "reps": 12, "challenge": "适中" },
+    { "exercise": "杠铃深蹲", "set": 4, "load_kg": 7.5, "reps": 8, "challenge": "有挑战", "note": "最后几下膝盖有点内扣" },
+    { "exercise": "杠铃卧推", "set": 1, "load_kg": 2.5, "reps": 16, "challenge": "轻松" },
+    { "exercise": "杠铃卧推", "set": 2, "load_kg": 5, "reps": 12, "challenge": "适中" },
+    { "exercise": "杠铃卧推", "set": 3, "load_kg": 5, "reps": 10, "challenge": "有挑战" },
+    { "exercise": "传统硬拉", "set": 1, "load_kg": 5, "reps": 12, "challenge": "适中" },
+    { "exercise": "传统硬拉", "set": 2, "load_kg": 5, "reps": 12, "challenge": "适中" },
+    { "exercise": "平板支撑", "set": 1, "seconds": 45, "challenge": "适中" },
+    { "exercise": "平板支撑", "set": 2, "seconds": 30, "challenge": "有挑战" }
+  ],
+  "new_exercises": []
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "kind": "workout",
+  "workout": {
+    "date": "2026-10-30",
+    "start_time": "07:10",
+    "type": "跑步",
+    "duration_min": 32.5,
+    "calories": 315,
+    "avg_hr": 148,
+    "distance_km": 5.2,
+    "steps": 5480,
+    "pace": "6:15",
+    "challenge": "轻松",
+    "performance": "节奏稳定，最后 1 公里加速",
+    "mood": "早上空气很好"
+  },
+  "sets": [],
+  "new_exercises": []
+}

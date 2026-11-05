@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "kind": "meal",
+  "meal": {
+    "date": "2026-11-05",
+    "meal": "午餐",
+    "items": [
+      { "food": "糙米饭", "grams": 150 },
+      { "food": "清蒸鲈鱼", "grams": 120, "note": "只吃了鱼肉" },
+      { "food": "炒西兰花", "grams": 100 }
+    ],
+    "note": "公司食堂"
+  }
+}

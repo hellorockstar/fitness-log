@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "kind": "workout",
+  "workout": {
+    "date": "2026-11-06",
+    "start_time": "7:00",
+    "type": "瑜伽",
+    "duration_min": 40,
+    "calorie": 200,
+    "challenge": "适中"
+  },
+  "sets": [],
+  "new_exercises": []
+}

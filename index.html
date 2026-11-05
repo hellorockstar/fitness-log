@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>运动记录</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="运动记录">
+  <meta name="theme-color" content="#f5f5f7">
+  <meta name="referrer" content="no-referrer">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <!-- 录入 -->
+    <section id="view-input" class="view">
+      <h1>录入</h1>
+      <button id="btn-paste" class="primary big">📋 粘贴 Gem 的 JSON</button>
+      <details id="manual" class="card">
+        <summary>手动粘贴</summary>
+        <textarea id="manual-text" rows="6" placeholder="长按这里 → 粘贴。粘贴后会自动预览。" autocapitalize="off" autocomplete="off" spellcheck="false"></textarea>
+        <button id="btn-manual-preview" class="secondary">预览</button>
+      </details>
+      <div id="input-status"></div>
+      <div id="preview"></div>
+    </section>
+
+    <!-- 记录 -->
+    <section id="view-history" class="view" hidden>
+      <h1>记录</h1>
+      <div class="segmented" role="tablist">
+        <button data-sub="recent" class="on">最近运动</button>
+        <button data-sub="exercise">动作历史</button>
+        <button data-sub="meals">饮食</button>
+      </div>
+      <div id="history-status"></div>
+      <div id="sub-recent" class="sub"></div>
+      <div id="sub-exercise" class="sub" hidden>
+        <select id="exercise-select"><option value="">选择动作…</option></select>
+        <div id="exercise-history"></div>
+      </div>
+      <div id="sub-meals" class="sub" hidden></div>
+    </section>
+
+    <!-- 设置 -->
+    <section id="view-settings" class="view" hidden>
+      <h1>设置</h1>
+      <p id="settings-intro" class="muted">首次使用：填写一次即可，保存在本机（只用 <code>fitlog_</code> 开头的 key）。</p>
+      <form id="settings-form" class="card" autocomplete="off">
+        <label>GitHub Token（fine-grained PAT）
+          <input id="s-token" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="github_pat_…">
+        </label>
+        <label>数据仓库 owner（你的 GitHub 用户名）
+          <input id="s-owner" autocapitalize="off" spellcheck="false" placeholder="例如 hellorockstar">
+        </label>
+        <label>数据仓库名
+          <input id="s-repo" autocapitalize="off" spellcheck="false" placeholder="fitness-log-data">
+        </label>
+        <button class="primary" type="submit">保存并测试连接</button>
+      </form>
+      <div id="settings-status"></div>
+      <details class="card">
+        <summary>清除本 App 在这台设备上的设置</summary>
+        <p class="muted">只删除 fitlog_token / fitlog_owner / fitlog_repo 三项，不影响同域名下的其他 App，也不影响 GitHub 上的数据。</p>
+        <button id="btn-forget" class="danger">清除设置</button>
+      </details>
+      <p class="muted small">版本：原型 v0.1 · 数据 schema v1</p>
+    </section>
+  </main>
+
+  <nav class="tabbar">
+    <button data-view="input" class="on"><span>➕</span>录入</button>
+    <button data-view="history"><span>📈</span>记录</button>
+    <button data-view="settings"><span>⚙️</span>设置</button>
+  </nav>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
